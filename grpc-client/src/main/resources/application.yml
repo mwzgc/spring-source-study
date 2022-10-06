@@ -1,0 +1,21 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: grpc-client
+
+grpc:
+  client:
+    grpc-service:
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
